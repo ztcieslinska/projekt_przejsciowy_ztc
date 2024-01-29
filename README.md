@@ -1,3 +1,13 @@
-# projekt_przejsciowy_ztc
+# Analiza tematyki poruszanej w artykułach medialnych dotyczących samochodów elektrycznych
 
-Opis projektu, uzasadnienie, jak używać kodu.
+Samochody elektryczne w niektórych kontekstach przedstawiane są jako rozwiązanie znaczącego wpływu samochodów spalinowych na środowisko przy zachowaniu komfortu transportu indywidualnego, jednak w innych zwraca się uwagę na nieoczywistość problemu i niedoskonałości tego rozwiązania. Dla części osób ciekawsze są marketingowe rozwiązania i udział producentów w rynku mobilności, a dla innych innowacje związane z magazynowaniem energii i rozwojem infrastruktury elektrycznej. Celem tego projektu jest pilotażowe zbadanie różnorodności poruszanej tematyki na przykładzie artykułów pochodzących ze zbioru danych [All the news 2](https://components.one/datasets/all-the-news-2-news-articles-dataset/), zawierającego publikacje z lat 2016-2020. Interesująca jest w tym przypadku perspektywa czasowa, gdzie flota samochodów elektrycznych zwiększyła się w niektórych regionach nawet trzykrotnie w przeciągu tych kilku lat, powodując także prawdopodobny wzrost zainteresowania medialnego.
+
+W folderze *wizualizacje* umieszczono prezentację końcową oraz kilka bardziej istotnych uzyskanych wykresów i innych wizualnych przedstawień danych. Ze względu na rozmiar, nie umieszczono tu całości otrzymanych artykułów, a jedynie poglądową próbkę w pliku *pickled_data.pickle*. Wszystkie używane biblioteki znajdują się w pliku *requirements.py*, a odsianie i czyszczenie danych przeprowadzono w pliku *get_filter_data*. Podstawowe stworzone w celu uzyskania wartości LDA funkcje zostały umieszczone w pliku *lda_funcions*, a użyte były w *lda_themes*. Chmury słów tworzono w pliku *create_wordclouds*.
+
+Ze względu na anglojęzyczność artykułów, dominująco występującym słowem był popularny w zachodnim świecie producent (Tesla), ale znacząco wzrastała także częstość użycia nazwy państwa - Chin - które w ostatnich latach odpowiadają za wiele innowacji w tym obszarze. Podział tematyczny z wykorzystaniem LDA okazał się być zdecydowanie zbyt ogólny jak na potrzebę wyodrębnienia konkretnych zestawów argumentów z tekstu, jednak pozwolił na wyróżnienie kilku ciekawych wątków: 
+* tematyki obejmującej Chiny i kwestie baterii oraz pierwiastków potrzebnych do ich budowy,
+* kwestie omawiające producentów samochodów i rozwijane technologie,
+* temat powiązany z polityką USA oraz zmianami klimatycznymi,
+* informacje związane z Teslą i dochodami firmy.
+
+Na kolejnych etapach projektu planowane jest zwiększenie zakresu badanych artykułów - analiza także opracowań specjalisycznych oraz pochodzących z dedykowanych elektromobilności blogów - oraz rodzajów wykorzystywanych narzędzi, w celu bardziej precyzyjnego wyznaczenia kluczowych kwestii omawianych w tekstach.
