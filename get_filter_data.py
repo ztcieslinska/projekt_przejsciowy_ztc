@@ -1,5 +1,4 @@
-import pandas as pd
-from tqdm import tqdm
+from requirements import *
 
 # https://components.one/datasets/all-the-news-2-news-articles-dataset/
 filename = "all-the-news-2-1.csv"
@@ -14,4 +13,22 @@ for chunk in tqdm(pd.read_csv(filename, chunksize=100000)):
     print(len(interesting_articles))
 
 df = pd.concat(all_data, ignore_index=True)
-df.to_pickle("pickled_data.pickle")
+df.to_pickle("pickle_data.pickle")
+
+df = pd.read_pickle("pickle_data.pickle")
+
+# sprowadzenie słów do ich prostszych postaci
+# lemmatyzacja za pomocą spacy jest znacznie wolniejsza, ale NLTK nie działało.
+print("Lemmatizing articles...")
+df['lemmatized_article'] = df['article'].str.translate(str.maketrans('', '', string.punctuation + '”’'))\
+    .str.lower()\
+    .progress_apply(nlp)
+
+df['lemmatized_article'] = df['lemmatized_article'].progress_apply(lambda doc: ' '.join([token.lemma_ for token in doc]))
+
+# sprowadzam wszystkie działy do małej litery
+df['section'] = df['section'].str.lower().fillna("no section")
+df['section'] = df['section'].str.replace("news", "").str.strip()
+df['section'] = df['section'].str.replace("technology", "tech", regex=True)
+
+df.to_pickle("pickle_data_lemm.pickle")
